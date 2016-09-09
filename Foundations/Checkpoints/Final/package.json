@@ -1,0 +1,20 @@
+{
+  "name": "assessment-foundations",
+  "version": "1.0.0",
+  "description": "testing functional and object-oriented javascript",
+  "scripts": {
+    "test": "testem",
+    "grade": "testem ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FullstackAcademy/assessment-foundations.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FullstackAcademy/assessment-foundations/issues"
+  },
+  "homepage": "https://github.com/FullstackAcademy/assessment-foundations#readme",
+  "dependencies": {
+    "testem": "0.9.1"
+  }
+}
