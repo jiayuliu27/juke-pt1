@@ -6,6 +6,7 @@ const proc = require('child_process')
 const stream = require('stream')
 const EventEmitter = require('events').EventEmitter
 
+// We use an actual parser grammar, defined in grammar.pegjs
 const parser = require('./grammar')
 
 const commandLine = require('readline').createInterface({

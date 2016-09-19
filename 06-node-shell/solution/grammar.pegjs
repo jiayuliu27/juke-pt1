@@ -1,3 +1,9 @@
+// Simple shell grammar supporting pipelines and environment variables.
+//
+// Build with:
+//
+//   pegjs grammar.pegjs
+
 Pipe = _ first:Command _ rest:(_ '|' _ cmd:Command { return cmd })* {
 	return [first, ...rest]
 }
