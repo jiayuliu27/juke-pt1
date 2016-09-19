@@ -20,6 +20,9 @@ Word =
 
 
 EnvironmentVariable = _ '$'env:$([a-zA-Z0-9_\-]+) {
+	// It's probably not such a great idea to do this in the parser.
+	// On the other hand, it's far from the worst thing a shell
+	// parser has ever done.
 	return process.env[env]
 }
 
