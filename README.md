@@ -24,13 +24,13 @@
 
 ## Selector.js
 
-* Lecture
-* Review
+* [Lecture](https://youtu.be/wZvIHSmuMd4)
+* [Review Q&A](https://youtu.be/cQBSoP6lNnM)
 
 ## Game of Life
 
-* Lecture
-* Review
+* [Lecture](https://youtu.be/vLkO2dfaV1k)
+* [Review](https://youtu.be/bERL8gaNmfY)
 
 ## Twitter.js
 
