@@ -21,3 +21,23 @@
 * Lecture I: general theory, Linked Lists, Queues
 * [Lecture II: Hash Tables, Binary Search Trees](https://youtu.be/lZqsvFByd0g)
 * [Review I & II](https://www.youtube.com/watch?v=96J_nObHWe0)
+
+## Selector.js
+
+* Lecture
+* Review
+
+## Game of Life
+
+* Lecture
+* Review
+
+## Twitter.js
+
+* Intro to Express Lecture
+* Review
+* [Review Q&A](https://youtu.be/Mh1_bvm_Zeo)
+
+## SQL
+* [Intro to Databases Lecture](https://youtu.be/AeZrzUSjxwk)
+* [Review](https://www.youtube.com/watch?v=meRYC47giig)
