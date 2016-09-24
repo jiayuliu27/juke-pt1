@@ -46,7 +46,7 @@
 ## FQL (CS Saturday)
 
 * [Intro Lecture](http://youtu.be/WQJmzTPsDEk)
-* [Review: Parts I and II](http://youtu.be/lZCOZsEPlcI)
+* [Review: Parts I and II](http://youtu.be/lZCOZsEPlcI), [solution commit](https://github.com/FullstackAcademy/1609GH-Library/commit/47ae236e835d26104f36e76de079839aaf0fc24a)
 * [Lecture: Indexing](http://youtu.be/-QtVrxb3Cyc)
-* [Review: Part III](http://youtu.be/q85H_msO09M)
-* [Review: Part IV](http://youtu.be/wuZboc_EIew)
+* [Review: Part III](http://youtu.be/q85H_msO09M), [solution commit](https://github.com/FullstackAcademy/1609GH-Library/commit/4021216547103f951bb796fc84c8794d4a782592)
+* [Review: Part IV](http://youtu.be/wuZboc_EIew), [solution commit](https://github.com/FullstackAcademy/1609GH-Library/commit/95f7670b640df24ea07857c507067ee6bb9dcff7)
