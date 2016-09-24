@@ -39,5 +39,10 @@
 * [Review Q&A](https://youtu.be/Mh1_bvm_Zeo)
 
 ## SQL
+
 * [Intro to Databases Lecture](https://youtu.be/AeZrzUSjxwk)
 * [Review](https://www.youtube.com/watch?v=meRYC47giig)
+
+## FQL (CS Saturday)
+
+* [Intro Lecture](http://youtu.be/WQJmzTPsDEk)
