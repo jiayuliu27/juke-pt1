@@ -20,13 +20,13 @@ var Plan = require('../source/plan');
 // --------------------------------------------
 describe("Part I: bedrock", function () {
 
-  xit("`Table` is a constructor that takes a folder path (don't worry about it too much yet)", function () {
+  it("`Table` is a constructor that takes a folder path (don't worry about it too much yet)", function () {
     expect(Table).to.be.a('function');
     var movieTable = new Table('film-database/movies-table')
     expect(movieTable).to.be.an.instanceOf(Table);
   });
 
-  xit("`Table.toFilename` converts an ID to a four-digit zero-padded filename", function () {
+  it("`Table.toFilename` converts an ID to a four-digit zero-padded filename", function () {
     expect(Table.toFilename).to.be.a('function');
     expect(Table.toFilename(3895)).to.equal('3895.json');
     expect(Table.toFilename(216)).to.equal('0216.json');
@@ -34,7 +34,7 @@ describe("Part I: bedrock", function () {
     expect(Table.toFilename(7)).to.equal('0007.json');
   });
 
-  xit("`Table.toId` converts a filename to an ID (number)", function () {
+  it("`Table.toId` converts a filename to an ID (number)", function () {
     expect(Table.toId).to.be.a('function');
     expect(Table.toId('4444.json')).to.equal(4444);
     expect(Table.toId('0333.json')).to.equal(333);
@@ -43,7 +43,7 @@ describe("Part I: bedrock", function () {
   });
 
   // HINT: check out `JSON.parse` (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
-  xit("`Table` instances (tables) can read from a folder, given an ID", function () {
+  it("`Table` instances (tables) can read from a folder, given an ID", function () {
     expect(Table.prototype.read).to.be.a('function');
     var movieTable = new Table('film-database/movies-table');
     var result = movieTable.read(2);
@@ -56,21 +56,21 @@ describe("Part I: bedrock", function () {
   });
 
   // HINT: checkout `fs.readdirSync` (https://nodejs.org/api/fs.html#fs_fs_readdirsync_path)
-  xit("tables can `getRowIds`", function () {
+  it("tables can `getRowIds`", function () {
     expect(Table.prototype.getRowIds).to.be.a('function');
     var movieTable = new Table('film-database/movies-table');
     var ids = movieTable.getRowIds();
     expect(ids).to.eql([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]);
   });
 
-  xit("`FQL` is a constructor that takes a table", function () {
+  it("`FQL` is a constructor that takes a table", function () {
     var movieTable = new Table('film-database/movies-table')
     expect(FQL).to.be.a('function');
     var movieQuery = new FQL(movieTable);
     expect(movieQuery).to.be.an.instanceOf(FQL);
   });
 
-  xit("`FQL` instances (queries) can retrieve all rows from their table using `get`", function () {
+  it("`FQL` instances (queries) can retrieve all rows from their table using `get`", function () {
     expect(FQL.prototype.get).to.be.a('function');
     var movieTable = new Table('film-database/movies-table');
     var movieQuery = new FQL(movieTable);
@@ -119,7 +119,7 @@ describe("Part I: bedrock", function () {
     ]);
   });
 
-  xit("queries can count all rows", function () {
+  it("queries can count all rows", function () {
     expect(FQL.prototype.count).to.be.a('function');
     var movieTable = new Table('film-database/movies-table');
     var movieQuery = new FQL(movieTable);
@@ -128,7 +128,7 @@ describe("Part I: bedrock", function () {
   });
 
   // why do queries have a plan you ask? ...see part II
-  xit("queries have a plan", function () {
+  it("queries have a plan", function () {
     var movieTable = new Table('film-database/movies-table');
     var movieQuery = new FQL(movieTable);
     expect(movieQuery).to.have.property('plan');

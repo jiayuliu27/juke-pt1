@@ -29,11 +29,11 @@ describe("Part II: query me this", function () {
 
   describe('#limit', function () {
 
-    xit("Plan instances (plans) hold a row limit", function () {
+    it("Plan instances (plans) hold a row limit", function () {
       expect(Plan.prototype.setLimit).to.be.a('function');
     });
 
-    xit("`withinLimit` always returns true if no limit has been set", function () {
+    it("`withinLimit` always returns true if no limit has been set", function () {
       expect(Plan.prototype.withinLimit).to.be.a('function');
       var plan = new Plan();
       var randomInteger = Math.floor(Math.random() * 1000);
@@ -41,7 +41,7 @@ describe("Part II: query me this", function () {
       expect(plan.withinLimit(randomlySizedArray)).to.equal(true);
     });
 
-    xit("a plan can return whether a possible result is `withinLimit`", function () {
+    it("a plan can return whether a possible result is `withinLimit`", function () {
       var plan = new Plan();
       plan.setLimit(14);
       expect(plan.withinLimit([])).to.equal(true);
@@ -53,7 +53,7 @@ describe("Part II: query me this", function () {
       expect(plan.withinLimit(arrayOfFourteenThings)).to.equal(false);
     });
 
-    xit("`limit` returns a query and does not cause the query to execute, only `get` does that", function () {
+    it("`limit` returns a query and does not cause the query to execute, only `get` does that", function () {
       expect(FQL.prototype.limit).to.be.a('function');
       chai.spy.on(movieTable, 'read');
       chai.spy.on(movieTable, 'getRowIds');
@@ -63,7 +63,7 @@ describe("Part II: query me this", function () {
       expect(movieTable.getRowIds).not.to.have.been.called();
     });
 
-    xit("queries can limit the result set", function () {
+    it("queries can limit the result set", function () {
       var limitQuery = movieQuery.limit(4);
       chai.spy.on(limitQuery.plan, 'withinLimit');
       var result = limitQuery.get();
@@ -76,7 +76,7 @@ describe("Part II: query me this", function () {
       ]);
     });
 
-    xit("the query minimizes reads from the table", function () {
+    it("the query minimizes reads from the table", function () {
       chai.spy.on(movieTable, 'read');
       movieQuery.limit(8).get();
       expect(movieTable.read).to.have.been.called.exactly(8);
@@ -86,18 +86,18 @@ describe("Part II: query me this", function () {
 
   describe("#select", function () {
 
-    xit("plans hold to-be-selected columns", function () {
+    it("plans hold to-be-selected columns", function () {
       expect(Plan.prototype.setSelected).to.be.a('function');
     });
 
-    xit("`selectColumns` takes a row and returns a row, always with the same columns and values if there are no selected columns", function () {
+    it("`selectColumns` takes a row and returns a row, always with the same columns and values if there are no selected columns", function () {
       expect(Plan.prototype.selectColumns).to.be.a('function');
       var plan = new Plan();
       var inputRow = {type: 'Tomatoe', price: 1000};
       expect(plan.selectColumns(inputRow)).to.eql(inputRow);
     });
 
-    xit("given to-be-selected columns, a plan's `selectColumns` will return a narrowed row", function () {
+    it("given to-be-selected columns, a plan's `selectColumns` will return a narrowed row", function () {
       var planA = new Plan();
       planA.setSelected(['type']);
       expect(planA.selectColumns({type: 'Tomatoe', price: 1000})).to.eql({type: 'Tomatoe'});
@@ -107,7 +107,7 @@ describe("Part II: query me this", function () {
       expect(planB.selectColumns(exampleRow)).to.eql({language: 'English', title: 'The Road'});
     });
 
-    xit("`select` returns a query and does not cause the query to execute, only `get` does that", function () {
+    it("`select` returns a query and does not cause the query to execute, only `get` does that", function () {
       expect(FQL.prototype.select).to.be.a('function');
       chai.spy.on(movieTable, 'read');
       chai.spy.on(movieTable, 'getRowIds');
@@ -117,13 +117,13 @@ describe("Part II: query me this", function () {
       expect(movieTable.getRowIds).not.to.have.been.called();
     });
 
-    xit("queries can select all columns", function () {
+    it("queries can select all columns", function () {
       var result = movieQuery.select('*').get();
       expect(result).to.have.length(36);
       expect(result[35]).to.eql({ id: 35, name: 'Vanilla Sky', year: 2001, rank: 6.9 });
     });
 
-    xit("queries can select a certain column", function () {
+    it("queries can select a certain column", function () {
       var result = movieQuery.select('name').get();
       expect(result).to.eql([
         { name: 'Aliens' },
@@ -165,7 +165,7 @@ describe("Part II: query me this", function () {
       ]);
     });
 
-    xit("queries can select multiple columns", function () {
+    it("queries can select multiple columns", function () {
       var resultA = new FQL(movieTable).select('name', 'year').get();
       expect(resultA).to.have.length(36);
       expect(resultA[0]).to.eql({ name: 'Aliens', year: 1986 });
@@ -190,11 +190,11 @@ describe("Part II: query me this", function () {
 
   describe('#where', function () {
 
-    xit("plans hold search criteria", function () {
+    it("plans hold search criteria", function () {
       expect(Plan.prototype.setCriteria).to.be.a('function');
     });
 
-    xit("`matchesRow` accepts a row and always returns true if there are no criteria", function () {
+    it("`matchesRow` accepts a row and always returns true if there are no criteria", function () {
       expect(Plan.prototype.matchesRow).to.be.a('function');
       var plan = new Plan();
       expect(plan.matchesRow({a: 123})).to.equal(true);
@@ -202,7 +202,7 @@ describe("Part II: query me this", function () {
       expect(plan.matchesRow({x: null, y: null})).to.equal(true);
     });
 
-    xit("for a plan with criteria `matchesRow` returns true only if the given row matches all criteria column values", function () {
+    it("for a plan with criteria `matchesRow` returns true only if the given row matches all criteria column values", function () {
       var planA = new Plan();
       planA.setCriteria({color: 'yellow'});
       expect(planA.matchesRow({color: 'yellow'})).to.equal(true);
@@ -218,7 +218,7 @@ describe("Part II: query me this", function () {
       expect(planB.matchesRow({title: 'Jelly Roll Blues', style: 'Jazz', year: 1915})).to.equal(true);
     });
 
-    xit("`where` returns a query and does not cause the query to execute, only `get` does that", function () {
+    it("`where` returns a query and does not cause the query to execute, only `get` does that", function () {
       expect(FQL.prototype.where).to.be.a('function');
       chai.spy.on(movieTable, 'read');
       chai.spy.on(movieTable, 'getRowIds');
@@ -228,7 +228,7 @@ describe("Part II: query me this", function () {
       expect(movieTable.getRowIds).not.to.have.been.called();
     });
 
-    xit("given criteria, queries can narrow the result set", function () {
+    it("given criteria, queries can narrow the result set", function () {
       var resultA = new FQL(movieTable).where({name: 'Shrek'}).get();
       expect(resultA).to.eql([
         { id: 29, name: 'Shrek', year: 2001, rank: 8.1 }
@@ -242,7 +242,7 @@ describe("Part II: query me this", function () {
       ]);
     });
 
-    xit("works with multiple fields", function () {
+    it("works with multiple fields", function () {
       var result = movieQuery.where({
         rank: 8.5,
         year: 1999
@@ -253,7 +253,7 @@ describe("Part II: query me this", function () {
       ]);
     });
 
-    xit("a criterion can match a value OR use a predicate function", function () {
+    it("a criterion can match a value OR use a predicate function", function () {
       var result = movieQuery.where({
         name: function (nameValueForARow) {
           return nameValueForARow.toLowerCase().indexOf('e') === -1;
@@ -279,7 +279,7 @@ describe("Part II: query me this", function () {
       ]);
     });
 
-    xit("any combination of predicates and values works", function () {
+    it("any combination of predicates and values works", function () {
       var result = movieQuery.where({
         rank: 7.5,
         year: function (yearVal) { return yearVal < 2000; }
