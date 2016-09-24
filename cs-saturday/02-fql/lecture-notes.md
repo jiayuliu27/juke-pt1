@@ -148,3 +148,13 @@ Takes an object and returns a string.
 ## File system
 
 We're going to be using synchronous methos to access the file system. `fs.readFileSync`, `fs.readdirSync`, that kind of thing
+
+---
+
+# Indexing
+
+Example of indexing not with computers: rolodex, filecabinet, dewey decimal, glossary/index in a textbook.
+
+To create a (hashed) index table for a given column, you loop through all the rows in the table. Find the row's value for the given column. Add that value as a column name for the index table, and include the original row's id to the listed values for that index table entry.
+
+To use an index table to speed up a query, start every query by checking if any of the queried fields are indexed. If they are, look them up in your index table. Loop through those ids, finding each corresponding row. Then, if there are other criteria left to match on, loop through the rows you found and only include those that match all the remaining criteria.

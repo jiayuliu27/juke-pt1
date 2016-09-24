@@ -46,4 +46,5 @@
 ## FQL (CS Saturday)
 
 * [Intro Lecture](http://youtu.be/WQJmzTPsDEk)
-- [Review Parts I and II](http://youtu.be/lZCOZsEPlcI)
+* [Review: Parts I and II](http://youtu.be/lZCOZsEPlcI)
+* [Lecture: Indexing](http://youtu.be/-QtVrxb3Cyc)
