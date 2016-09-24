@@ -54,7 +54,20 @@ FQL.prototype.get = function () {
 // };
 
 FQL.prototype.get = function () {
-  var rowIds = this.table.getRowIds();
+
+  var criteriaColumns = Object.keys(this.plan.criteria || {});
+  var indexedColumn = criteriaColumns.find((columnName) => {
+    return this.table.hasIndexTable(columnName);
+  });
+  var rowIds;
+  if (indexedColumn === undefined) {
+    rowIds = this.table.getRowIds();
+  } else {
+    var indexTable = this.table.getIndexTable(indexedColumn);
+    var indexTableKeyWhichIsAlsoARowValue = this.plan.criteria[indexedColumn]
+    rowIds = indexTable[indexTableKeyWhichIsAlsoARowValue];
+  }
+
   var rows = [];
   for (var i = 0; i < rowIds.length && this.plan.withinLimit(rows); i++) {
     var initialRow = this.table.read(rowIds[i]);

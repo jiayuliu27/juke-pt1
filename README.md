@@ -48,3 +48,5 @@
 * [Intro Lecture](http://youtu.be/WQJmzTPsDEk)
 * [Review: Parts I and II](http://youtu.be/lZCOZsEPlcI)
 * [Lecture: Indexing](http://youtu.be/-QtVrxb3Cyc)
+* [Review: Part III](http://youtu.be/q85H_msO09M)
+* [Review: Part IV](http://youtu.be/wuZboc_EIew)

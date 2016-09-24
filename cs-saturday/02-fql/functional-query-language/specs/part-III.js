@@ -44,7 +44,7 @@ describe("Part III: (w)indexing", function () {
 
   afterEach(removeNonDataTables);
 
-  xit("tables can be indexed by a column", function () {
+  it("tables can be indexed by a column", function () {
     // `hasIndexTable`
     expect(Table.prototype.hasIndexTable).to.be.a('function');
     expect(movieTable.hasIndexTable('year')).to.equal(false);
@@ -79,7 +79,7 @@ describe("Part III: (w)indexing", function () {
     });
   });
 
-  xit("where queries take advantage of indexed columns to minimize table reads", function () {
+  it("where queries take advantage of indexed columns to minimize table reads", function () {
     // non-indexed query
     chai.spy.on(movieTable, 'read');
     var nonIndexedResult = new FQL(movieTable)
@@ -109,7 +109,7 @@ describe("Part III: (w)indexing", function () {
     return '    ' + str;
   }
 
-  xit("produces results more quickly for sparse finds", function () {
+  it("produces results more quickly for sparse finds", function () {
     // non-indexed
     var nonIndexedStart = process.hrtime();
     var nonIndexedResult = new FQL(actorTable).where({last_name: 'Miller'}).get();
