@@ -129,7 +129,7 @@ describe("Part III: (w)indexing", function () {
     // results are the same
     expect(nonIndexedResult).to.eql(indexedResult);
     // indexed query should be significantly faster
-    expect(factor).to.be.greaterThan(100);
+    expect(factor).to.be.greaterThan(2);
   });
 
 });

@@ -54,29 +54,10 @@ FQL.prototype.get = function () {
 // };
 
 FQL.prototype.get = function () {
-
-  var criteriaColumns = Object.keys(this.plan.criteria || {});
-  var indexedColumn = criteriaColumns.find((columnName) => {
-    return this.table.hasIndexTable(columnName);
+  return this.map((row) => {
+    var selectedRow = this.plan.selectColumns(row);
+    return selectedRow;
   });
-  var rowIds;
-  if (indexedColumn === undefined) {
-    rowIds = this.table.getRowIds();
-  } else {
-    var indexTable = this.table.getIndexTable(indexedColumn);
-    var indexTableKeyWhichIsAlsoARowValue = this.plan.criteria[indexedColumn]
-    rowIds = indexTable[indexTableKeyWhichIsAlsoARowValue];
-  }
-
-  var rows = [];
-  for (var i = 0; i < rowIds.length && this.plan.withinLimit(rows); i++) {
-    var initialRow = this.table.read(rowIds[i]);
-    if (this.plan.matchesRow(initialRow)) {
-      var selectedRow = this.plan.selectColumns(initialRow);
-      rows.push(selectedRow);
-    }
-  }
-  return rows;
 };
 
 FQL.prototype.count = function () {
@@ -98,6 +79,46 @@ FQL.prototype.select = function () {
 FQL.prototype.where = function (criteria) {
   this.plan.setCriteria(criteria);
   return this;
+};
+
+FQL.prototype.map = function (iter) {
+  var criteriaColumns = Object.keys(this.plan.criteria || {});
+  var indexedColumn = criteriaColumns.find((columnName) => {
+    return this.table.hasIndexTable(columnName);
+  });
+  var rowIds;
+  if (indexedColumn === undefined) {
+    rowIds = this.table.getRowIds();
+  } else {
+    var indexTable = this.table.getIndexTable(indexedColumn);
+    var indexTableKeyWhichIsAlsoARowValue = this.plan.criteria[indexedColumn]
+    rowIds = indexTable[indexTableKeyWhichIsAlsoARowValue];
+  }
+
+  var rows = [];
+  for (var i = 0; i < rowIds.length && this.plan.withinLimit(rows); i++) {
+    var initialRow = this.table.read(rowIds[i]);
+    if (this.plan.matchesRow(initialRow)) {
+      rows.push(iter(initialRow, rowIds[i]));
+    }
+  }
+  return rows;
+};
+
+FQL.prototype.delete = function () {
+  return this.map((row, id) => {
+    this.table.erase(id);
+    return row;
+  });
+};
+
+FQL.prototype.set = function (updates) {
+  return this.map((row, id) => {
+    this.table.update(id, updates);
+    var updatedRow = this.table.read(id);
+    var selectedRow = this.plan.selectColumns(updatedRow);
+    return updatedRow;
+  });
 };
 
 module.exports = FQL;
