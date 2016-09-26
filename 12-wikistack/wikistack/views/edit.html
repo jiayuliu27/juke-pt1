@@ -5,14 +5,12 @@
     <link rel=stylesheet href=/static/style.css>
   </head>
   <body>
-    <form method=post>
-      <input name=title value="{{ page.title }}">
-      <main>
-        <textarea name=content>
-          {{ page.content }}
-        </textarea>
-      </main>
-      <input type=submit value=edit>
+    <form class=page method=post>
+      <header class=page-header>
+        <input class=page-title name=title placeholder=title value="{{ page.title }}"></input>
+        <input class=page-action type=submit value='🌏 publish'></input>
+      </header>
+      <textarea class=page-content name=content placeholder=content>{{ page.content }}</textarea>
     </form>
   </body>
 </html>

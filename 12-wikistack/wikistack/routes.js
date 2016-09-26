@@ -25,6 +25,6 @@ module.exports = require('express').Router()
           content: req.body.content,
           urlTitle: req.params.urlTitle || null,
         })
-        .then(ok => res.redirect(req.url))
+        .then(ok => res.redirect(req.params.urlTitle || '/'))
         .catch(next))
            
