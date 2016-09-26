@@ -1,0 +1,8 @@
+main {
+    margin: 12px;
+}
+
+[contenteditable] {
+    border: thin dotted black;
+    outline: 0;
+}

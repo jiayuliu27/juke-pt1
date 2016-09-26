@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    <link rel=stylesheet href=/static/style.css>
+  </head>
+  <body>
+    <h1 {{ 'contenteditable' if editing }}>{{ page.title }}</h1>
+    <main {{ 'contenteditable' if editing }}>
+      {{ page.content }}
+    </main>
+  </body>
+</html>
