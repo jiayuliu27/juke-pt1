@@ -35,10 +35,8 @@ const Page = db.define('page', {
 // "[with different text](some_title)".
 function wikiToMarkdown(content) {
   return (content || '').replace(/\[\[([\w\s\d]+)(\|([\w\s\d]+))?\]\]/g,
-                                 (match, title, _, text) => {
-                                   console.log('in rpelace', match, text, title)
-                                   return `[${(text || title).trim()}](${asLink(title)})`
-                                 })
+                                 (match, title, _, text) =>
+                                 `[${(text || title).trim()}](${asLink(title)})`)
 }
 
 // asLink(title: String) -> String

@@ -8,8 +8,8 @@
     <form class=page method=post>
       <header class=page-header>
         <input class=page-title name=title placeholder=title value="{{ page.title }}"></input>
-        <input class=page-author name=email placeholder=email value="{{ user.email }}"></input>
-        <input class=page-author name=name placeholder=name value="{{ user.name }}"></input>
+        <input class=page-author name=name placeholder=name value="{{ author.name }}"></input>
+        <input class=page-author name=email placeholder=email value="{{ author.email }}"></input>        
         <input class=page-action type=submit value='🌏 publish'></input>
       </header>
       <textarea class=page-content name=content placeholder=content>{{ page.content }}</textarea>

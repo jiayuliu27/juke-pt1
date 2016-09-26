@@ -1,3 +1,4 @@
+const Promise = require('bluebird')
 const {Page, User} = require('./db')
 
 module.exports = require('express').Router()
@@ -16,33 +17,43 @@ module.exports = require('express').Router()
 
          if (editing)
            // We don't have to render markdown if we're in edit mode,
-           // so just serve the view.
-           return res.render('edit', {page, editing})
+           // so just serve the view.           
+           return Promise.props({
+             page,
+             editing,
+             author: page.getAuthor(),
+           }).then(props => res.render('edit', props))
          else
-           // Render the markdown first, then serve the show view.
-           return page.html.then(html =>
-                                 res.render('page', {html, page, editing}))
+           return Promise.props({
+             page,
+             editing,
+             author: page.getAuthor(),
+             html: page.html,
+           }).then(props => res.render('page', props))
        })
        .catch(next))
+
   // Redirect /wiki/page to /page
-  .get('/wiki/:urlTitle?', (req, res) => {
-    console.log('redirecting', req.url, 'to', req.params.urlTitle)
-    res.redirect(`/${req.params.urlTitle || ''}`)
+  .get('/wiki/:urlTitle?', (req, res) => res.redirect(`/${req.params.urlTitle || ''}`))
+
+  .post('/:urlTitle?', (req, res, next) => {
+    const author = User.findOrCreate({
+      where: {
+        name: req.body.name,
+        email: req.body.email,
+      }
+    }).then(([author, _wasCreated]) => author)
+
+    const page = Page.findOrCreate({
+      where: {urlTitle: req.params.urlTitle || null}
+    }).then(([page, _wasCreated]) => page.update({
+      title: req.body.title,
+      content: req.body.content,
+    }))
+
+    return Promise
+      .props({page, author})
+      .then(({page, author}) => page.setAuthor(author))
+      .then(ok => res.redirect(req.params.urlTitle || '/'))
+      .catch(next)
   })
-  .post('/:urlTitle?', (req, res, next) =>
-        User.findOrCreate({
-          where: {
-            name: req.body.name,
-            email: req.body.email,
-          }
-        }).then(user =>
-                Page
-                .upsert({
-                  title: req.body.title,
-                  content: req.body.content,
-                  urlTitle: req.params.urlTitle || null,
-                  author: user,                  
-                }))
-        .then(ok => res.redirect(req.params.urlTitle || '/'))
-        .catch(next))
-           

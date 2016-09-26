@@ -94,4 +94,20 @@ body, html {
     background: none;
     border: 0;
     outline: 0;
+    line-height: 64px;
+
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 9px;    
+}
+
+.page-author:visited,
+.page-author:active {
+    color: black;
+}
+
+input.page-author {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14pt;
 }
