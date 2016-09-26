@@ -8,10 +8,16 @@
     <div class=page>
       <header class=page-header>
         <h1 class=page-title>{{ page.title }}</h1>
+        {% if user %}
+        <a class=page-author href='mailto:{{ user.email }}'>
+          {{ user.name }}
+          &lt;{{ user.email }}&gt;
+        </a>
+        {% endif %}
         <a class=page-action href="?edit">✏️ edit</a>
       </header>
       <main class=page-content>
-        {{ page.content }}
+        {{ html | safe }}
       </main>
     </div>
   </body>
