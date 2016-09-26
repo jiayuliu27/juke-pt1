@@ -27,6 +27,6 @@ if (!module.parent) {
       // environment variable.
       force: process.env.NODE_ENV !== 'production' &&
         'FORCE_SYNC_DB' in process.env})
-    .then(_ => app.listen(process.env.PORT || 9898))
+    .then(_ => app.listen(process.env.PORT || 3000))
 }
   
