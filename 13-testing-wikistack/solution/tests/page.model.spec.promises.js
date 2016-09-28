@@ -120,11 +120,6 @@
 //         expect(err).to.exist;
 //         expect(err.errors).to.contain.a.thing.with.property('path', 'title');
 //       })
-//   // Promise-y refactor gets a bit hairy when you start using Promise.all and chai-things...
-//       // return Promise.all([
-//       //   expect(pageValidationErr).to.eventually.exist,
-//       //   expect(pageValidationErr.errors).to.eventually.contain.a.thing.with.property('path', 'title')
-//       // ]);
 //     });
 
 //     it('errors without content', function(){

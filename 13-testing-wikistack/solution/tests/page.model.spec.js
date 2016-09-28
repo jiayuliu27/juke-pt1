@@ -173,10 +173,13 @@ describe('Page model', function () {
 
       // have to actually save to run the enum validation, can't just .validate
       page.save()
-      .then(null, function(err){
+      .then(function(){
+        throw new Error('Promise should have rejected');
+      }, function(err){
         expect(err.message).to.contain('status');
         done();
-      });
+      })
+      .catch(done);
     });
   });
 
