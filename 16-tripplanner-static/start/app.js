@@ -12,16 +12,24 @@ app.use(volleyball);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// statically serve public folder
-app.use(express.static(__dirname + '/public'));
-
 // nunjucks boilerplate
 nunjucks.configure('views', { noCache: true });
 app.engine('html', nunjucks.render);
 app.set('view engine', 'html');
 
+// statically serve public folder
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', function(req, res, next){
 	res.render('index');
+});
+
+// not found middleware
+app.use(function(req, res, next){
+	var err = new Error('Not Found');
+	err.status = 404;
+	console.error(err);
+	next(err);
 });
 
 // error-handling middleware
