@@ -73,3 +73,5 @@
 ## Pledge
 * [Review](https://youtu.be/_KEDJHHULGU)
 
+## Express-Sequelize
+* [Review (pre-checkpoint)](https://youtu.be/5BmPXZTxBww)
