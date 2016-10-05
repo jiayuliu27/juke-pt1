@@ -22,6 +22,19 @@ function readFileAsync(filename) {
   })
 }
 
+var out = []
+['file1', 'file2', 'file3']
+  .forEach((file, i) => fs.readFile(file, (err, buf) => {
+    if (err) { return out[i] = err }
+    out[i] = buf
+  })
+
+var fileProms = ['file1', 'file2', 'file3']
+    .map(file => readFileAsync(file))
+
+fileProms[0].then(
+
+
 // readFileCapitalized(file) -> Promise<String>
 //
 // Reads a file and returns its capitalized content.
@@ -57,3 +70,4 @@ function promiseLike() {
 }
 
 promiseLike().then().then().then()
+  

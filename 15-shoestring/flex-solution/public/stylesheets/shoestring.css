@@ -338,111 +338,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* 
-Custom CSS for...
-'Modern Business' HTML Theme by Start Bootstrap
-
-All Start Bootstrap themes are licensed under Apache 2.0. 
-For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
-*/
-/* Global Styles */
-html, body {
-  height: 100%; }
-
-body {
-  padding-top: 50px;
-  /* body padding for fixed top nav */ }
-
-.img-home-portfolio,
-.img-customer,
-.portfolio-item {
-  margin-bottom: 30px; }
-
-.tab-pane {
-  margin-top: 15px; }
-
-/* Page Sections */
-.section,
-.section-colored {
-  padding: 50px 0; }
-
-.section-colored {
-  background-color: #e1e1e1;
-  /* change this to change the background color of a colored section */ }
-
-.sidebar {
-  margin-top: 40px; }
-
-.sidebar ul {
-  border-radius: 5px;
-  padding: 5px;
-  border: 1px solid #cccccc; }
-
-/* Half Page Height Carousel Customization */
-.carousel {
-  height: 50%; }
-
-.item,
-.active,
-.carousel-inner {
-  height: 100%; }
-
-.fill {
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover; }
-
-/* Social Icons Styles */
-.list-social-icons {
-  margin-bottom: 45px; }
-
-.tooltip-social a {
-  text-decoration: none;
-  color: inherit; }
-
-.facebook-link a:hover {
-  color: #3b5998; }
-
-.linkedin-link a:hover {
-  color: #007fb1; }
-
-.twitter-link a:hover {
-  color: #39a9e0; }
-
-.google-plus-link a:hover {
-  color: #d14836; }
-
-/* Service Page Styles */
-.service-icon {
-  font-size: 50px; }
-
-/* 404 Page Styles */
-.error-404 {
-  font-size: 8em; }
-
-/* Pricing Page Styles */
-.price {
-  font-size: 4em; }
-
-.price-cents {
-  vertical-align: super;
-  font-size: 50%; }
-
-.price-month {
-  font-size: 35%;
-  font-style: italic; }
-
-/* Footer Styles */
-footer {
-  margin: 50px 0; }
-
-/* Responsive Styles */
-@media (max-width: 767px) {
-  .carousel {
-    height: 70%;
-    /* increases the carousel height so it looks good on phones */ } }
-
 * {
   box-sizing: border-box; }
 
@@ -477,3 +372,118 @@ footer {
 
 body h1 {
   color: white; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+ul.row {
+  list-style: none;
+  padding: 0; }
+  ul.row > li {
+    flex-basis: calc(100% / 3 - 4 * 9px);
+    max-width: 20em;
+    min-width: initial;
+    margin: 9px; }
+    @media screen and (max-width: 720px) {
+      ul.row > li {
+        width: 100%; } }
+
+.section {
+  margin: 0;
+  padding: 0; }
+
+.portfolio {
+  padding: 18px 0 18px 0;
+  background: #111;
+  color: #eee; }
+  .portfolio h2 {
+    text-align: center; }
+  .portfolio ul {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: center;
+    list-style: none;
+    padding: 9px;
+    margin: 0;
+    font-size: 0; }
+    .portfolio ul li {
+      flex-basis: calc(100% / 3 - 4 * 9px);
+      max-width: initial;
+      min-width: initial;
+      margin: 9px; }
+      @media screen and (max-width: 720px) {
+        .portfolio ul li {
+          width: 100%; } }
+
+.hero {
+  width: 100%; }
+
+.banner {
+  text-align: center;
+  padding: 25px 0 25px 0; }
+
+.color-block {
+  background: deeppink; }
+
+.img-responsive {
+  width: 100%;
+  height: 100%; }
+
+.figure-with-caption {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 18px; }
+  .figure-with-caption figure {
+    min-width: 256px;
+    flex-basis: calc(100% / 2 - 3 * 9px);
+    max-width: 100%;
+    min-width: 256px;
+    margin: 9px; }
+    @media screen and (max-width: 720px) {
+      .figure-with-caption figure {
+        width: 100%; } }
+    .figure-with-caption figure > img {
+      width: 100%; }
+
+/*
+"Retro cool":
+
+* {
+    animation-name: pulse;
+    animation-duration: 113ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    from { background: rgb(255, 0, 255); }
+    to { opacity: 0; background: rgb(0, 0, 0); }
+}
+
+*/
+footer::before {
+  display: block;
+  content: '';
+  border-bottom: thin solid black;
+  height: 18px;
+  border-radius: 0 0 10px 10px;
+  background: white;
+  -webkit-box-shadow: 0px 7px 9px 0px black;
+  -moz-box-shadow: 0px 7px 9px 0px black;
+  box-shadow: 0px 7px 9px 0px black; }
+
+footer {
+  background: #222;
+  text-align: center;
+  color: #999;
+  padding-bottom: 18px; }
+  footer cite {
+    display: block;
+    margin-top: 28px; }
+
+.flip-horizontal {
+  transform: scale(-1, 1);
+  display: inline-block; }
