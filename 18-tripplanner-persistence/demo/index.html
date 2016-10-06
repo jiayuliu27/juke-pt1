@@ -1,0 +1,48 @@
+<html>
+	
+	<head>
+		<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+	</head>
+	<body>
+		<h2>Welcome to Generic App</h2>
+		<p><a href="/games">View games JSON</a></nodemp>
+		<button id="fetch-btn">Fetch and Display Games</button><br>
+		<ul id="game-list"></ul>
+		<script type="text/javascript">
+			$('#fetch-btn').click(function(){
+				// example with .ajax method and Promises
+				// $.ajax({
+				// 	method: 'GET',
+				// 	url: '/games',
+				// 	success: function(dataFromBackend){
+				// 		dataFromBackend.forEach(function(gameObj){
+				// 			$('#game-list').append(`<li>${gameObj.name}</li>`);
+				// 		})
+				// 	},
+				// 	error: console.error
+				// });
+
+				// example with .ajax method and Promises (must be using at least jQuery version 3)
+
+				// $.ajax({
+				// 	method: 'GET',
+				// 	url: '/games'
+				// })
+				// .then(function(dataFromBackend){
+				// 		dataFromBackend.forEach(function(gameObj){
+				// 			$('#game-list').append(`<li>${gameObj.name}</li>`);
+				// 		})
+				// })
+				// .catch(console.error);
+
+				// example with convenience method:
+				$.get('/games', function(dataFromBackend){
+						dataFromBackend.forEach(function(gameObj){
+							$('#game-list').append(`<li>${gameObj.name}</li>`);
+						})
+					})
+				.fail(console.error);
+			});
+		</script>
+	</body>
+</html>
