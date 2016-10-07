@@ -75,3 +75,6 @@
 
 ## Express-Sequelize
 * [Review (pre-checkpoint)](https://youtu.be/5BmPXZTxBww)
+
+## FVS (CS Saturday)
+- [Repo](https://github.com/FullstackAcademy/fvs) (contains video review)
