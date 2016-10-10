@@ -1,0 +1,151 @@
+@import "normalize";
+
+$block-background: deeppink;
+
+$lightbox-background: #111;
+$lightbox-foreground: #eee;
+
+* {
+  box-sizing: border-box;
+}
+
+@import "navbar";
+
+body {
+  h1 {
+    color: white;
+  }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@mixin columns($count: 3, $gutter: 9px, $max-width: 20em, $min-width: initial) {
+    flex-basis: calc(100% / #{$count} - #{$count + 1} * #{$gutter});
+    max-width: $max-width;
+    min-width: $min-width;
+    margin: $gutter;
+    @media screen and (max-width: 720px) {
+        width: 100%;
+    }    
+}
+
+ul.row {
+    list-style: none;
+    padding: 0;    
+
+    & > li {
+        @include columns();
+    }
+}
+
+.section {
+    margin: 0;
+    padding: 0;
+}
+
+.portfolio {
+    padding: 18px 0 18px 0;
+    background: $lightbox-background;
+    color: $lightbox-foreground;
+    
+    h2 {
+        text-align: center;
+    }
+
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        align-content: space-between;
+        justify-content: center;
+        list-style: none;
+        padding: 9px;
+        margin: 0;
+        font-size: 0;
+        
+        li {
+            @include columns(3, $max-width: initial);
+        }
+    }
+}
+
+.hero { width: 100%; }
+
+.banner {
+    text-align: center;
+    padding: 25px 0 25px 0;
+}
+
+.color-block {
+    background: $block-background;
+}
+
+.img-responsive {
+    width: 100%;
+    height: 100%;
+}
+
+.figure-with-caption {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 18px;
+    
+    figure {
+        min-width: 256px;
+        @include columns(2, $max-width: 100%, $min-width: 256px);
+        & > img { width: 100%; }
+    }
+
+}
+
+/*
+"Retro cool":
+
+* {
+    animation-name: pulse;
+    animation-duration: 113ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    from { background: rgb(255, 0, 255); }
+    to { opacity: 0; background: rgb(0, 0, 0); }
+}
+
+*/
+
+
+footer::before {
+    // This draws the rounded bottom of the page.    
+    display: block;
+    content: '';    
+    border-bottom: thin solid black;
+    height: 18px;
+    border-radius: 0 0 10px 10px;
+    background: white;
+
+    -webkit-box-shadow: 0px 7px 9px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 7px 9px 0px rgba(0,0,0,1);
+    box-shadow: 0px 7px 9px 0px rgba(0,0,0,1);
+}
+
+footer {
+    background: #222;
+    text-align: center;
+    color: #999;
+    padding-bottom: 18px;
+
+    cite {
+        display: block;
+        margin-top: 28px;
+    }
+}
+
+.flip-horizontal {
+    transform: scale(-1, 1);
+    display: inline-block;
+}

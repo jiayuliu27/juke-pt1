@@ -1,0 +1,16 @@
+{
+  "name": "13-testing-wikistack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.0"
+  }
+}
