@@ -78,3 +78,6 @@
 
 ## FVS (CS Saturday)
 - [Repo](https://github.com/FullstackAcademy/fvs) (contains video review)
+
+## Juke
+* [Lecture: Intro to React](http://youtu.be/hdGq4s6k37k)
