@@ -58,3 +58,8 @@ footer {
 
 .album img {
   height: 300px; }
+
+.active, .hide {
+  display: none;
+}
+
